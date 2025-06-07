@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Un Universo Llamado Tú</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js">    gsap.registerPlugin(ScrollTrigger);
+    gsap.utils.toArray('.papel-carta p').forEach(parrafo => {
+      gsap.to(parrafo, {
+        scrollTrigger: {
+          trigger: parrafo,
+          start: 'top 90%',
+          toggleActions: 'play reverse play reverse',
+        },
+        opacity: 1,
+        y: 0,
+        duration: 1.4,
+        ease: 'power3.out'
+      });
+    });
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      scroll-behavior: smooth;
+      font-family: 'Segoe UI', sans-serif;
+      overflow-x: hidden;
+      background: black;
+      margin: 0;
+      padding: 0;
+    }
+    .section {
+      height: 100vh;
+      width: 100%;
+      position: relative;
+      perspective: 1000px;
+    }
+    .espacio {
+      background: linear-gradient(to bottom, #000011 0%, #000000 60%, #000a22 90%, #87CEEB 100%);
+      overflow: hidden;
+      z-index: 1;
+      position: relative;
+    }
+    .cielo {
+      background: linear-gradient(to bottom, #87CEEB 0%, #00aaff 70%, #007788 100%);
+      position: relative;
+      z-index: 2;
+      overflow: hidden;
+    }
+    .mar {
+      background: linear-gradient(to bottom, #007788 0%, #004444 80%, #f5deb3 100%);
+      overflow: hidden;
+      z-index: 3;
+      position: relative;
+    }
+    .tierra {
+      background: #f5deb3;
+      overflow: hidden;
+      z-index: 4;
+      position: relative;
+    }
+    .estrella {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      animation: twinkle 2s infinite alternate;
+      opacity: 0.6;
+    }
+    @keyframes twinkle {
+      0% { opacity: 0.2; transform: scale(1); }
+      100% { opacity: 0.8; transform: scale(1.3); }
+    }
+    .luna {
+      animation: rotarLuna 8s ease-in-out infinite alternate;
+      position: absolute;
+      top: 10%;
+      left: 10%;
+      width: 150px;
+      height: 150px;
+      background-image: url('https://static.vecteezy.com/system/resources/thumbnails/014/012/729/small/half-moon-space-illustration-png.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      z-index: 10;
+    }
+    @keyframes rotarLuna {
+      0% { transform: scale(1) rotate(0deg) translateY(0); }
+      25% { transform: scale(1.03) rotate(1deg) translateY(-1px); }
+      50% { transform: scale(1.05) rotate(2deg) translateY(-2px); }
+      75% { transform: scale(1.03) rotate(1deg) translateY(-1px); }
+      100% { transform: scale(1) rotate(0deg) translateY(0); }
+    }
+    .toalla {
+      position: absolute;
+      border-radius: 4px;
+      width: 100px;
+      height: 60px;
+      animation: ondearToalla 4s ease-in-out infinite alternate;
+    }
+    @keyframes ondearToalla {
+      0% { transform: rotate(90deg) translateX(-50%) rotate(0deg); }
+      100% { transform: rotate(90deg) translateX(-50%) rotate(2deg); }
+    }
+    .sombrilla {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      animation: ondearSombrilla 3s ease-in-out infinite alternate;
+      z-index: 6;
+    }
+    @keyframes ondearSombrilla {
+      0% { transform: scale(1) rotate(0deg); }
+      100% { transform: scale(1.05) rotate(2deg); }
+    }
+    @keyframes volarIzq {
+    0% { left: -200px; }
+    100% { left: 110%; }
+  }
+
+  @keyframes nadar {
+    0% { left: 100%; }
+    100% { left: -150px; }
+  }
+
+  @keyframes fugaz {
+    0% { transform: translateX(0) translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateX(-150vw) translateY(100px) rotate(720deg); opacity: 0; }
+  }
+  @keyframes moverNubeReal {
+    0% { transform: translateX(-200px); }
+    100% { transform: translateX(2000px); }
+  }
+
+  @keyframes respirarLuna {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+</style>
+  <style>
+    .papel-carta {
+      position: absolute;
+      top: 10vh;
+      right: 5%;
+      width: 30%;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      font-family: 'Dancing Script', cursive;
+      z-index: 9999;
+      max-height: none;
+    }
+    .papel-carta::-webkit-scrollbar {
+      width: 6px;
+    }
+    .papel-carta::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 0, 0, 0.2);
+      border-radius: 3px;
+    }
+    .papel-carta p {
+      opacity: 0;
+      transform: translateY(40px);
+      font-size: 1.2rem;
+      margin-bottom: 1.2rem;
+      line-height: 1.6;
+      color: #222;
+    }
+  </style>
+</head>
+<body>
+  <div class="papel-carta">
+Oh, que día. 
+Qué,
+maldito,
+día.
+Pues, bueno.
+Cómo ya sabrás, esto es literalmente UNA CHORRADA del tamaño de una catedral.
+Precisamente por el hecho de qué se me ha descomponido la computadora a días de enviarte tu regalo.
+No estoy para nada orgulloso, feliz, ni satisfecho con esta maldita mamaguevo mielda.
+Pero en serio, es qué, no podía no darte nada.
+Y si podía escribirte, que mejor qué hacer algo bien gracioso cómo programar una web.
+Una web con mamadas bien graciosas.
+Pero que no hace la situación menos triste.
+Confío en qué algún día te pueda enseñar todo lo que he estado haciendo durante todos estos meses.
+Pero el que haya perdido la oportunidad de enviarte algo muy grande, muy bonito y detallado,
+no significa que haya perdido la oportunidad de demostrarte lo mucho que me importas, 
+y lo mucho que me importa lo que pueda significar para ti el qué a alguien le importes tú, 
+y tus fechas especiales.
+Bueno, ahora sí, después de casi 20 líneas hablando mamadas.
+SARA
+Felicidades mi amor.
+Iba a decir creo, pero definitivamente no lo creo, lo sé. 
+Sé que te mereces mucho más que esto.
+Sé que DEBES tener mucho más que esto.
+Sé que tú el día de mi cumpleaños hiciste algo que, de verdad, está a años luz de esta maldita TONTERÍA.
+Y de verdad qué, me sabe tan mal sara.
+Pero no quiero hacer de un día tan bonito cómo lo es tu cumpleaños, un texto llorando por lo que no ha podido ser.
+Todo lo que no ha podido ser por culpa del destino, YO haré que se haga bien realidad, el destino lo quiera o no así.
+Que curioso que cumplas el mismo mes que empezamos a salir, este mes hacemos 1 año, no será el único cumpleaños que celebraremos.
+En todo este año, me has enseñado tantas cosas sara, ya mucho más allá de lo que una relación se refiere.
+Considero de verdad qué eres una persona excepcional, increíble y que vale mucho la pena conocer.
+Creo qué cualquiera debería de tener en la vida una Sara.
+Pero, la mía no, de ser posible, yo no comparto.
+Eres una persona tan bonita, tan dulce y qué hace de mi vida una experiencia tan agradable, aún sabiendo qué nada está yendo bien.
+Pero tienes un don, un don para poder hacer todo lo no bonito, un poco más bonito.
+Y creéme que jamás he conocido a nadie con esa capacidad, con esas mamadoras palabras que hechizan, y la magia en tus actos.
+Jamás, por nada del mundo, perdería la oportunidad de aprovechar para tener a alguien cómo tú en mi círculo Sara.
+Eres la luz materializada y personificada en un pequeño babuíno peludo y rojo, raro, pero bonito.
+Lo he dicho en incontables veces, momentos, situaciones y circunstancias a lo largo de la relación, pero sara,
+has hecho de mi vida, lo más bonito que uno podría vivir jamás, el sueño de cualquier persona,
+el vivir algo tan sano, bonito, y duradero.
+Alguien con quien comparto objetivos, metas, pensamientos, estilo de vida, es un regalo, sara, eres un regalo.
+Y me apena mucho qué alguien cómo tú dude de si misma, de sus capacidades, de sus pensamientos, de su aspecto y de su persona.
+Supongo qué cómo dicen, una de cal y una de arena, pero yo haré todo lo qué tenga que hacer para qué puedas verte cómo eres, 
+y cómo mereces que te veas, cómo te vemos los demás y el alma más bonita que vemos en ti.
+Esto es casi cómo venir con las manos vacías, pero, solamente quería mostrarte que me importa mucho sara, me importas mucho, 
+y jamás dejaría que pensases que a nadie le importan las fechas que a ti si, y con las que te gustaría compartir con alguien más.
+Y quizá este no sea ese año, pero lo qué si sé es qué será el último en el que suceda.
+Sara, te mereces todo lo bonito de este mundo, todo lo bonito que haces por los demás, y cómo de bonito piensas en el resto, antes que en ti,
+algún día se te devolverá absolutamente todo lo que haces por mi, y por cualquier persona por la que te preocupas.
+Eres mi persona favorita, Sara, te amo con todo mi corazón.
+Felicidades mi niña bonita, espero qué disfrutes de ver a cero dando vueltas por el espacio.
+  
+</p>
+  </div>
+  <div class="section espacio">
+    <div class="luna" style="animation: rotarLuna 8s ease-in-out infinite alternate, respirarLuna 10s ease-in-out infinite alternate;"></div>
+  </div>
+  <div class="section cielo">
+    <img class="nube-png" src="https://static.vecteezy.com/system/resources/thumbnails/022/093/838/small/cloud-icon-in-flat-style-free-png.png" style="top: 200px; left: 100px; transform: scale(1.4); position: absolute; z-index: 4; animation: moverNubeReal 240s linear infinite;">
+    <img class="nube-png" src="https://static.vecteezy.com/system/resources/thumbnails/022/093/838/small/cloud-icon-in-flat-style-free-png.png" style="top: 50px; left: 800px; transform: scale(1.2); position: absolute; z-index: 4; animation: moverNubeReal 260s linear infinite;">
+    <img class="nube-png" style="animation: moverNubeReal 220s linear infinite; position: absolute; top: 150px; left: 400px; transform: scale(1.0); z-index: 4;">
+    <img class="nube-png" src="https://static.vecteezy.com/system/resources/thumbnails/022/093/838/small/cloud-icon-in-flat-style-free-png.png" style="top: 100px; left: 600px; transform: scale(0.6); position: absolute; z-index: 4; animation: moverNube 120s linear infinite;">
+    <img class="sol-png" src="https://static.vecteezy.com/system/resources/thumbnails/009/399/550/small/sun-icon-set-clipart-design-illustration-free-png.png" style="top: 20px; right: 50px; width: 100px; position: absolute; z-index: 3;">
+  </div>
+  <div class="section mar"></div>
+  <div class="section tierra">
+                <div class="arena"></div>
+    <div class="casa"></div>
+    <div class="toalla" style="bottom: 630px; left: 10%; background: repeating-linear-gradient(90deg, #ff6666, #ff6666 10px, #ffffff 10px, #ffffff 20px);"></div>
+    <div class="toalla" style="bottom: 630px; left: 25%; background: repeating-linear-gradient(90deg, #66ccff, #66ccff 10px, #ffffff 10px, #ffffff 20px);"></div>
+    <div class="toalla" style="bottom: 630px; left: 40%; background: repeating-linear-gradient(90deg, #66ff66, #66ff66 10px, #ffffff 10px, #ffffff 20px);"></div>
+    <div class="toalla" style="bottom: 630px; left: 55%; background: repeating-linear-gradient(90deg, #ffff66, #ffff66 10px, #ffffff 10px, #ffffff 20px);"></div>
+    <div class="toalla" style="bottom: 630px; left: 70%; background: repeating-linear-gradient(90deg, #ff99cc, #ff99cc 10px, #ffffff 10px, #ffffff 20px);"></div>
+    <div class="sombrilla" style="bottom: 635px; left: 6%; background: repeating-conic-gradient(#ff6666 0% 25%, #ffffff 25% 50%);"></div>
+    <div class="sombrilla" style="bottom: 635px; left: 21%; background: repeating-conic-gradient(#66ccff 0% 25%, #ffffff 25% 50%);"></div>
+    <div class="sombrilla" style="bottom: 635px; left: 36%; background: repeating-conic-gradient(#66ff66 0% 25%, #ffffff 25% 50%);"></div>
+    <div class="sombrilla" style="bottom: 635px; left: 51%; background: repeating-conic-gradient(#ffff66 0% 25%, #ffffff 25% 50%);"></div>
+    <div class="sombrilla" style="bottom: 635px; left: 66%; background: repeating-conic-gradient(#ff99cc 0% 25%, #ffffff 25% 50%);"></div>
+  </div>
+  <script>
+    let contadorGaviotas = 0;
+let probabilidadPerro = 0;
+
+function generarEstrellas(cantidad) {
+  const espacio = document.querySelector('.espacio');
+  for (let i = 0; i < cantidad; i++) {
+    const estrella = document.createElement('div');
+    estrella.className = 'estrella';
+    estrella.style.top = Math.random() * 100 + '%';
+    estrella.style.left = Math.random() * 100 + '%';
+    estrella.style.width = estrella.style.height = Math.random() * 2 + 1 + 'px';
+    estrella.style.animation = `twinkle ${Math.random() * 0.6 + 0.3}s infinite alternate`;
+    espacio.appendChild(estrella);
+  }
+}
+
+function generarGaviota() {
+  const cielo = document.querySelector('.cielo');
+  if (!cielo) return;
+  const esNovia = contadorGaviotas % 4 === 0 && Math.random() < 0.8;
+  contadorGaviotas++;
+  const size = 60 + Math.random() * 40;
+  const top = `${Math.random() * 200 + 50}px`;
+
+  if (esNovia) {
+    const contenedor = document.createElement('div');
+    contenedor.style.position = 'absolute';
+    contenedor.style.width = `${size}px`;
+    contenedor.style.height = `${size}px`;
+    contenedor.style.top = top;
+    contenedor.style.left = '-200px';
+    contenedor.style.animation = `volarIzq ${4 + Math.random() * 3}s linear forwards`;
+
+    const alas = document.createElement('img');
+    alas.src = 'https://static.vecteezy.com/system/resources/thumbnails/029/200/804/small_2x/realistic-style-angel-s-wings-no-background-perfect-for-photograph-backdrop-ai-generated-png.png';
+    alas.style.width = '140%';
+    alas.style.position = 'absolute';
+    alas.style.top = '0';
+    alas.style.left = '0';
+    alas.style.zIndex = '1';
+
+    const novia = document.createElement('img');
+    novia.src = 'https://i.postimg.cc/ZK2fcHzV/Whats-App-Image-2025-06-05-at-17-27-50-5.jpg';
+    novia.style.width = '60%';
+    novia.style.position = 'absolute';
+    novia.style.top = '0';
+    novia.style.left = '38%';
+    novia.style.zIndex = '2';
+
+    contenedor.appendChild(alas);
+    contenedor.appendChild(novia);
+    cielo.appendChild(contenedor);
+    contenedor.addEventListener('animationend', () => contenedor.remove());
+  } else {
+    const gaviota = document.createElement('div');
+    gaviota.className = 'gaviota';
+    gaviota.style.width = gaviota.style.height = `${size}px`;
+    gaviota.style.top = top;
+    gaviota.style.left = '-200px';
+    gaviota.style.backgroundImage = "url('https://static.vecteezy.com/system/resources/previews/040/452/489/non_2x/ai-generated-flying-seagull-isolated-on-transparent-background-free-png.png')";
+    gaviota.style.backgroundSize = 'contain';
+    gaviota.style.backgroundRepeat = 'no-repeat';
+    gaviota.style.position = 'absolute';
+    gaviota.style.animation = `volarIzq ${4 + Math.random() * 3}s linear forwards`;
+    cielo.appendChild(gaviota);
+    gaviota.addEventListener('animationend', () => gaviota.remove());
+  }
+}
+
+function generarPez() {
+  const mar = document.querySelector('.mar');
+  if (!mar) return;
+  const pez = document.createElement('div');
+  pez.className = 'pez';
+  pez.style.width = pez.style.height = '60px';
+  pez.style.top = `${Math.random() * 100 + 50}px`;
+  pez.style.left = '100%';
+  const peces = [
+    'https://static.vecteezy.com/system/resources/thumbnails/037/446/548/small/goldfish-isolated-on-transparent-background-ornamental-fish-generative-ai-png.png',
+    'https://png.pngtree.com/png-clipart/20231006/original/pngtree-tilapia-fish-transparent-background-png-image_13280347.png',
+    'https://pics.clipartpng.com/Yellow_ZebrasomaTang_Fish_PNG_Clipart-461.png',
+    'https://static.vecteezy.com/system/resources/thumbnails/043/848/265/small_2x/tropical-fish-isolated-on-transparent-background-png.png'
+  ];
+  if (!window.pezIndex || window.pezIndex >= peces.length) {
+    window.pezIndex = 0;
+    window.pecesMezclados = peces.sort(() => Math.random() - 0.5);
+  }
+  const pezURL = window.pecesMezclados[window.pezIndex++];
+  pez.style.backgroundImage = `url('${pezURL}')`;
+
+  if (window.pezEasterIndex === undefined) window.pezEasterIndex = 0;
+  window.pezEasterIndex++;
+  if (window.pezEasterIndex >= 4 && Math.random() < 0.88) {
+    window.pezEasterIndex = 0;
+    const fotos = [
+      'https://i.postimg.cc/KcsQGfjx/Whats-App-Image-2025-06-05-at-17-27-48-1.jpg',
+      'https://i.postimg.cc/4xp11T5x/Whats-App-Image-2025-06-05-at-17-27-50.jpg',
+      'https://i.postimg.cc/wBVcScnK/Whats-App-Image-2025-06-05-at-17-27-49-2.jpg',
+      'https://i.postimg.cc/Y2XD4knc/Whats-App-Image-2025-06-05-at-17-27-52-3.jpg'
+    ];
+    const foto = fotos[Math.floor(Math.random() * fotos.length)];
+    pez.style.backgroundImage = `url('${foto}')`;
+  }
+
+  pez.style.backgroundSize = 'contain';
+  pez.style.backgroundRepeat = 'no-repeat';
+  pez.style.position = 'absolute';
+  pez.style.animation = `nadar ${8 + Math.random() * 4}s linear forwards`;
+  mar.appendChild(pez);
+  pez.addEventListener('animationend', () => pez.remove());
+}
+
+function estrellaFugaz() {
+  const espacio = document.querySelector('.espacio');
+  if (window.estrellaActiva) return;
+  probabilidadPerro += 10;
+  if (Math.random() * 100 > probabilidadPerro) return;
+  probabilidadPerro = 0;
+  window.estrellaActiva = true;
+
+  const contenedor = document.createElement('div');
+  contenedor.style.position = 'absolute';
+  contenedor.style.top = '30px';
+  contenedor.style.left = Math.random() > 0.5 ? '100%' : '-150px';
+  contenedor.style.animation = 'fugaz 4s linear forwards';
+
+  const perro = document.createElement('div');
+  perro.style.width = '100px';
+  perro.style.height = '100px';
+  perro.style.backgroundImage = "url('https://i.postimg.cc/Y2XD4knc/Whats-App-Image-2025-06-05-at-17-27-52-3.jpg')";
+  perro.style.backgroundSize = 'contain';
+  perro.style.backgroundRepeat = 'no-repeat';
+  perro.style.position = 'absolute';
+  perro.style.top = '40px';
+  perro.style.left = '0';
+
+  const ufo = document.createElement('div');
+  ufo.style.width = '60px';
+  ufo.style.height = '60px';
+  ufo.style.backgroundImage = "url('https://png.pngtree.com/png-clipart/20241110/original/pngtree-ufo-flying-transparent-free-png-image_16853377.png')";
+  ufo.style.backgroundSize = 'contain';
+  ufo.style.backgroundRepeat = 'no-repeat';
+  ufo.style.position = 'absolute';
+  ufo.style.top = '0px';
+  ufo.style.left = '20px';
+
+  contenedor.appendChild(ufo);
+  contenedor.appendChild(perro);
+  espacio.appendChild(contenedor);
+  setTimeout(() => {
+    contenedor.remove();
+    window.estrellaActiva = false;
+  }, 4000);
+}
+
+// Inicializar efectos
+setInterval(generarGaviota, 4000);
+setInterval(generarPez, 3000);
+setInterval(() => {
+  probabilidadPerro = 100;
+  estrellaFugaz();
+}, 7000);
+generarEstrellas(200);
+    // que incluye: estrellas, gaviotas, peces, easter eggs, animaciones, etc.
+  </script>dy>
+<
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Un Universo Llamado Tú</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      scroll-behavior: smooth;
+      font-family: 'Segoe UI', sans-serif;
+      overflow-x: hidden;
+      background: black;
+      margin: 0;
+      padding: 0;
+    }
+    .papel-carta {
+      position: fixed;
+      top: 10vh;
+      right: 5%;
+      width: 30%;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+      font-family: 'Dancing Script', cursive;
+      z-index: 9999;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+    .papel-carta::-webkit-scrollbar {
+      width: 6px;
+    }
+    .papel-carta::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 0, 0, 0.2);
+      border-radius: 3px;
+    }
+    .papel-carta p {
+      opacity: 0;
+      transform: translateY(40px);
+      font-size: 1.2rem;
+      margin-bottom: 1.2rem;
+      line-height: 1.6;
+      color: #222;
+    }
+  </style>
+</head>
+<body>
+  
+  </div>
+
+  <!-- RESTO DEL CÓDIGO SIGUE INTACTO -->
+  <!-- El contenido restante del HTML continúa desde aquí, no fue alterado -->
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.utils.toArray('.papel-carta p').forEach(parrafo => {
+      gsap.to(parrafo, {
+        scrollTrigger: {
+          trigger: parrafo,
+          start: 'top 90%',
+          toggleActions: 'play none none none'
+        },
+        opacity: 1,
+        y: 0,
+        duration: 1.4,
+        ease: 'power3.out'
+      });
+    });
+  </script>
+</body>
+</html>
